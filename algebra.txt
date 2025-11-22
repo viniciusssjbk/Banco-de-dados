@@ -1,0 +1,63 @@
+/*/ALGEBRA RELACIONAL/*/
+/*/questao 1/*/
+πArtistId,Name(artist)
+
+/*/questao 2/*/
+γCOUNT(genreid)→quant_genero(genre)
+
+/*/questao 3/*/
+πFirstName,LastName,Email(Customer)
+
+/*/questao 4/*/
+πname(MediaType)
+
+/*/questao 5/*/
+πTitle,ArtistId(album)
+
+/*/questao 6/*/
+γCOUNT(EmployeeId)→ρquant_func(employee)
+
+/*/questao 7/*/
+πname(playlist)
+
+/*/questao 8/*/
+πUnitPrice(σtrackid=10(track))
+
+/*/questao 9/*/
+πcountry(customer)∪πcountry(customer)
+
+/*/questao 10/*/
+γCOUNT(InvoiceId)→quant_fatura(invoice)
+
+/*/questao 11/*/
+πFirstName,LastName(σcountry='brazil'(Customer))
+
+/*/questao 12/*/
+σUnitPrice>1(track)
+
+/*/questao 13/*/
+σHireDate<2003-01-01 ∧ HireDate<2002-01-01(employee)
+
+/*/questao 14/*/
+σgenreId=1(track)
+
+/*/questao 15/*/
+σTitle='Sales Manager'(employee)
+
+/*/questao 16/*/
+γCOUNT(InvoiceId)→client_fatu(σCustomerId=1(invoice))
+
+/*/questao 17/*/
+σmilliseconds>300000(track)
+
+/*/questao 18/*/
+σartistid=1(album)
+
+/*/questao 19/*/
+σsupportrepid IS NULL(customer)
+
+/*/questao 20/*/
+γcount(trackid)→track_count(σplaylistid=1(PlaylistTrack))
+
+/*/questao 21/*/
+ρnome_track,nome_genre(πtrack.name,genre.name(σtrack.genreid = genre.genreid(track x genre)))
