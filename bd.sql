@@ -74,11 +74,11 @@ select*from tarefabd.album where artistid =1;
 
 /*/questiao 19/*/
 
-select*from tarefabd.customer where supportrepid = null;
+select*from tarefabd.customer where supportrepid IS NULL;
 
 /*/questiao 20/*/
 
-select count(trackid) from tarefabd.PlaylistTrack where playlistid = 1;
+select count(trackid) as track_count from tarefabd.PlaylistTrack where playlistid = 1;
 
 /*/questiao 21/*/
 
@@ -269,19 +269,29 @@ having COUNT(distinct i.billingcountry) > 1;
 
 /*/ questao 49 /*/
 
-select g.name as genre, tr.name from
-tarefabd.track as tr 
-join tarefabd.genre as g
-on tr.genreid = g.genreid
-where tr.unitprice = (
-  select MAX(t.unitprice) from tarefabd.track as t
-  where t.genreid = g.genreid
+SELECT 
+    g.name AS genero,
+    t.name AS faixa,
+    t.unitprice
+FROM tarefabd.track AS t
+JOIN tarefabd.genre AS g
+    ON g.genreid = t.genreid
+WHERE t.unitprice = (
+    SELECT MAX(t2.unitprice)
+    FROM tarefabd.track AS t2
+    WHERE t2.genreid = t.genreid
 )
+ORDER BY genero;
 
 /*/questao 50/*/
 select DATE_TRUNC('month', invoicedate) as mes_ano, SUM(total) as total_vendas
 from tarefabd.invoice
-gruop by DATE_TRUNC('month', invoicedate)
+group by DATE_TRUNC('month', invoicedate)
 order by mes_ano;
+
+
+
+
+
 
 
